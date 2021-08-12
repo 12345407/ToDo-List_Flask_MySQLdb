@@ -18,15 +18,16 @@ app.secret_key = os.urandom(24)
 
 
 # Config MySQL
-mysql = MySQL()
-app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'todo'
+
+
+app.config['MYSQL_HOST'] = 'pypirahul.mysql.pythonanywhere-services.com'
+app.config['MYSQL_USER'] = 'pypirahul'
+app.config['MYSQL_PASSWORD'] = 'qwertyuiop'
+app.config['MYSQL_DB'] = 'pypirahul$todo'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 # Initialize the app for use with this MySQL class
-mysql.init_app(app)
+mysql = MySQL(app)
 
 
 def is_logged_in(f):
