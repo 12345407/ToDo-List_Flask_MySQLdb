@@ -1,0 +1,20 @@
+{% include 'index.html' %}
+{% include 'includes/_flashmsg.html' %}
+
+{% block content %}
+<form role="form" method="POST" action="">
+    <fieldset class="">
+        <h4 style="text-align:center">Enter Your Email-id to Continue</h4>
+
+        <div class="form-group" style="width: 350px ; margin:0 auto;display:flex ">
+            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+        </div>
+
+        <!-- Change this to a button or input when using this as a form -->
+
+    </fieldset>
+</form>
+
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% include 'includes/_flashmsg.html' %}
+<!-- Modal for update Task -->
+<hr style=" border:1px solid black;">
+<div class="content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="Label">Update task</h5>
+        <a href="/"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+    </div>
+
+    <div class="modal-body">
+        {% for product in product %}
+        <form role="form" method="POST" action="/Task_update?id={{product.id}}">
+            <fieldset class="">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="task-form-display">Task</span>
+
+                    <input type="text" name="heading_updated" class="form-control" placeholder="Heading of task"
+                        value="{{product.task_name}}" required autofocus>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="task-form-display">Task</span>
+
+                    <textarea name="description_updated" id="dis1" cols="30" rows="2" class="form-control"
+                        placeholder="Description of task"></textarea>
+                </div>
+                <button id="submit-task" type="submit" class="btn btn-primary">Save
+                </button>
+            </fieldset>
+        </form>
+        {% endfor %}
+
+
+    </div>
+
+
+</div>
+
+
+<!-- End -->
+
+{% endblock body %}

@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% include 'includes/_flashmsg.html' %}
+<!--Todo Table-->
+<div class="container table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="task-id">#</th>
+                <th class="date">Date</th>
+                <th class="task">Task Name</th>
+                <th class="status">Status</th>
+                <th class="update">Edit</th>
+                <th class="update">Remove</th>
+            </tr>
+        </thead>
+
+        {% if 'logged_in' in session %}
+        <tbody>
+            {% for item in product %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.task_name}}</td>
+
+                {% if item.status == "Active" %}
+                <td><a href="/status?id={{item.id}}">
+                        <button type="button" class="btn btn-outline-warning btn-sm state"
+                            data-source="{{item.id}}">{{item.status}}</button>
+                    </a>
+                </td>
+                <td><a href="/Task_update?id={{item.id}}"> <button type="button" class="btn btn-outline-info btn-sm"
+                            data-source="{{item.id}}" data-content="{{item.task_name}}"><i class="fa fa-pen fa-1"
+                                aria-hidden="true"></i></button></a>
+
+
+                </td>
+
+                <td><a href="/Task_delete?id={{item.id}}"><button class="btn btn-outline-secondary btn-sm remove"
+                            data-source="{{item.id}}" type="button"><i class="fa fa-trash fa-1"
+                                aria-hidden="true"></i></button></a></td>
+            </tr>
+            {%endif%}
+            {% if item.status == "Complete" %}
+            <td><a href="/status?id={{item.id}}">
+                    <button type="button" class="btn btn-outline-success btn-sm state"
+                        data-source="{{item.id}}">{{item.status}}</button>
+
+                </a></td>
+            <td> <button type="button" style="cursor: not-allowed;" class="btn btn-outline-info btn-sm"
+                    data-source="{{item.id}}" data-content="{{item.task_name}}"><i class="fa fa-pen fa-1"
+                        aria-hidden="true"></i></button>
+
+
+            </td>
+
+            <td><a href="/Task_delete?id={{item.id}}"><button class="btn btn-outline-secondary btn-sm remove"
+                        data-source="{{item.id}}" type="button"><i class="fa fa-trash fa-1"
+                            aria-hidden="true"></i></button></a></td>
+            </tr>
+            {%endif%}
+
+
+            {% endfor %}
+
+        </tbody>
+
+        {% else %}
+        {% block content %}
+
+        {% endblock content %}
+        {% endif %}
+
+
+
+
+
+
+
+    </table>
+
+</div>
+
+{% endblock body %}

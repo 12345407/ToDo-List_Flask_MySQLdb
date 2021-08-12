@@ -1,0 +1,24 @@
+-- Table structure for table `users`
+--
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(50) NOT NULL,
+    `email` varchar(50) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = MyISAM AUTO_INCREMENT = 16 DEFAULT CHARSET = latin1;
+--
+
+-- Table structure for table `todo`
+--
+DROP TABLE IF EXISTS `todo`;
+CREATE TABLE IF NOT EXISTS `todo` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `t_id` int(11) NOT NULL,
+    `date` DATE DEFAULT now(),
+    `task_name` varchar(50) NOT NULL,
+    `notes` varchar(50)  NULL,
+    `status` varchar(50) DEFAULT 'Active',
+    PRIMARY KEY (`id`)
+) ENGINE = MyISAM AUTO_INCREMENT = 16 DEFAULT CHARSET = latin1;
+--
